@@ -48,7 +48,7 @@ jobs:
       run: |
         tar -cvf doc.tar.gz doc/book/*
 
-    # TODO
+    # TODO(#7)
     # - name: Upload docs
     #   uses: actions/upload-artifact@v3
     #   if: github.repository == 'GaloisInc/${{ env.NAME }}'
@@ -56,3 +56,17 @@ jobs:
     #     name: "${{ env.NAME }}-docs"
     #     path: "*.tar.gz"
     #     if-no-files-found: error
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Format
+      run: cargo fmt && git diff --exit-code
+    - name: Deps
+      run: |
+        rustup update
+        rustup component add clippy
+    - uses: Swatinem/rust-cache@v2.6.0
+    - name: Lint
+      run: cargo clippy -- --deny warnings
