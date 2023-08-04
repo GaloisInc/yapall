@@ -96,9 +96,6 @@ pub struct Options {
     pub unification: bool,
 }
 
-// TODO: Support other sizes
-const POINTER_BYTES: u64 = 8;
-
 // Profiling machinery
 #[inline]
 #[allow(unused_variables)]
@@ -604,7 +601,6 @@ pub fn analysis<'module>(
           operand_points_to(ctx, value, pointee_alloc),
           operand_points_to(ctx, pointer, pointer_alloc),
           if pointer_alloc.storable(),
-          if pointer_alloc.size_at_least(POINTER_BYTES),
           //
           if count("alloc_points_to", "store");
 
@@ -619,7 +615,6 @@ pub fn analysis<'module>(
           //
           load(instr, pointer),
           operand_points_to(ctx, pointer, pointer_alloc),
-          if pointer_alloc.size_at_least(POINTER_BYTES),
           alloc_points_to(pointer_alloc, pointee_alloc),
           //
           if count("operand_points_to", "load");
@@ -795,10 +790,8 @@ pub fn analysis<'module>(
           let min_size = sz.unwrap_or(0),
           operand_points_to(ctx, src, src_alloc),
           if src_alloc.loadable(),
-          if src_alloc.size_at_least(min_size),
           operand_points_to(ctx, dst, dst_alloc),
           if dst_alloc.storable(),
-          if dst_alloc.size_at_least(min_size),
           //
           if count("memcpy_alloc", "memcpy_alloc");
 
@@ -1085,7 +1078,7 @@ pub fn analysis<'module>(
           memcpy(ctx, dst, _, sz),
           let min_size = sz.unwrap_or(0),
           operand_points_to(ctx, dst, dst_alloc),
-          if !dst_alloc.storable() || !dst_alloc.size_at_least(min_size);
+          if !dst_alloc.storable();
 
         relation invalid_memcpy_src(Arc<Operand>, Arc<Alloc>);
         invalid_memcpy_src(src.clone(), src_alloc.clone()) <--
@@ -1093,7 +1086,7 @@ pub fn analysis<'module>(
           memcpy(ctx, _, src, sz),
           let min_size = sz.unwrap_or(0),
           operand_points_to(ctx, src, src_alloc),
-          if !src_alloc.loadable() || !src_alloc.size_at_least(min_size);
+          if !src_alloc.loadable();
 
         relation invalid_store(Arc<Operand>, Arc<Alloc>);
         invalid_store(pointer.clone(), alloc.clone()) <--

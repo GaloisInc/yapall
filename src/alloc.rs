@@ -220,7 +220,6 @@ impl Display for HeapAlloc {
 pub struct StackAlloc {
     // TODO: Include the allocation function/signature
     name: UArc<InstructionName>,
-    min_size: Option<u64>,
     parent: SArc<RwLock<Option<Arc<StackAlloc>>>>,
 }
 
@@ -274,10 +273,9 @@ impl UnionFind for StackAlloc {
 }
 
 impl StackAlloc {
-    pub fn alloca(name: UArc<InstructionName>, a: &Alloca) -> Arc<Self> {
+    pub fn alloca(name: UArc<InstructionName>, _a: &Alloca) -> Arc<Self> {
         Arc::new(StackAlloc {
             name,
-            min_size: a.min_size(),
             parent: SArc::new(RwLock::new(None)),
         })
     }
@@ -285,7 +283,6 @@ impl StackAlloc {
     pub fn signature(name: UArc<InstructionName>) -> Arc<Self> {
         Arc::new(StackAlloc {
             name,
-            min_size: None,
             parent: SArc::new(RwLock::new(None)),
         })
     }
@@ -293,14 +290,7 @@ impl StackAlloc {
 
 impl Display for StackAlloc {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(
-            f,
-            "*{}({})",
-            self.name,
-            self.min_size
-                .map(|s| s.to_string())
-                .unwrap_or_else(|| "_".to_string())
-        )
+        write!(f, "*{}", self.name,)
     }
 }
 
@@ -336,9 +326,7 @@ impl Alloc {
         match (&self, o) {
             (Alloc::Global(p), Alloc::Global(q)) => GlobalAlloc::do_merge(p, q),
             (Alloc::Heap(p), Alloc::Heap(q)) if p.size == q.size => HeapAlloc::merge(p, q),
-            (Alloc::Stack(p), Alloc::Stack(q)) if p.min_size == q.min_size => {
-                StackAlloc::merge(p, q)
-            }
+            (Alloc::Stack(p), Alloc::Stack(q)) => StackAlloc::merge(p, q),
             _ => false,
         }
     }
@@ -375,17 +363,6 @@ impl Alloc {
             // No `_` pattern to ensure this is updated if the type changes
             Alloc::Heap(_) => true,
             Alloc::Stack(_) => true,
-            Alloc::Top => true,
-        }
-    }
-
-    pub(crate) fn size_at_least(&self, size: u64) -> bool {
-        match self {
-            Alloc::Function(_) => false,
-            Alloc::Global(_) => true,
-            Alloc::Heap(a) => a.size.map(|s| s >= size).unwrap_or(true),
-            Alloc::Stack(a) => a.min_size.map(|s| s >= size).unwrap_or(true),
-            Alloc::Null => false,
             Alloc::Top => true,
         }
     }
