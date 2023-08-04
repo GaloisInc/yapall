@@ -23,7 +23,7 @@ where
 }
 
 impl<T> PreHashed<T> {
-    pub fn new(val: T) -> Self
+    pub(crate) fn new(val: T) -> Self
     where
         T: Hash,
     {
@@ -31,19 +31,19 @@ impl<T> PreHashed<T> {
         Self { val, hash }
     }
 
-    pub fn for_ref(&self) -> PreHashed<&T> {
+    pub(crate) fn for_ref(&self) -> PreHashed<&T> {
         PreHashed {
             val: &self.val,
             hash: self.hash.unsafe_coerce(),
         }
     }
 
-    pub fn _into_inner(self) -> T {
+    pub fn into_inner(self) -> T {
         self.val
     }
 
     /// The function shouldn't change the hash of the value
-    pub fn _unsafe_map<R, F: FnOnce(T) -> R>(self, f: F) -> PreHashed<R> {
+    pub(crate) fn _unsafe_map<R, F: FnOnce(T) -> R>(self, f: F) -> PreHashed<R> {
         PreHashed {
             val: f(self.val),
             hash: self.hash.unsafe_coerce(),
@@ -52,7 +52,7 @@ impl<T> PreHashed<T> {
 }
 
 impl<T: Clone> PreHashed<&T> {
-    pub fn _from_ref(&self) -> PreHashed<T> {
+    fn _from_ref(&self) -> PreHashed<T> {
         PreHashed {
             val: self.val.clone(),
             hash: PrecomputedHash::unsafe_from_u64(self.hash.to_u64()),

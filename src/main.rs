@@ -73,7 +73,7 @@ fn main() -> Result<()> {
     // just a guess:
         HashMap::with_capacity(llvm_module.global_vars.len() + (8 * llvm_module.functions.len()));
     let module = llvm::Module::new(&llvm_module, &mut operands).context("Malformed LLVM module")?;
-    std::mem::drop(operands);
+    drop(operands);
 
     let opts = pointer::Options {
         check_assertions: args.check == cli::Check::Default || args.check == cli::Check::Strict,
