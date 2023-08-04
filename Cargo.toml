@@ -37,7 +37,7 @@ harness = false
 ascent = { version = "*", "git" = "https://github.com/s-arash/ascent", branch = "par" }
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
-dashmap = "3"
+dashmap = "5"
 dhat = { version = "0.3", optional = true }
 either = "1"
 # TODO: https://github.com/cdisselkoen/llvm-ir/pull/34
