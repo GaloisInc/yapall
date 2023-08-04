@@ -8,6 +8,7 @@ on:
 env:
   # The NAME makes it easier to copy/paste snippets from other CI configs
   NAME: yapall
+  CACHE_VERSION: 1
 
 jobs:
   doc:
@@ -67,6 +68,8 @@ jobs:
         rustup update
         rustup component add clippy
     - uses: Swatinem/rust-cache@v2.6.0
+      with:
+        prefix-key: ${{ env.CACHE_VERSION }}
     - name: Lint
       run: cargo clippy -- --deny warnings
 
@@ -78,6 +81,8 @@ jobs:
       with:
         version: "14.0"
     - uses: Swatinem/rust-cache@v2.6.0
+      with:
+        prefix-key: ${{ env.CACHE_VERSION }}
     - run: env RUSTFLAGS="@$PWD/rustc-flags" cargo test --locked --no-run
     # TODO(#4)
     # - run: env RUSTFLAGS="@$PWD/rustc-flags" cargo test
