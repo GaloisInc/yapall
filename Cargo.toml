@@ -1,0 +1,54 @@
+[package]
+name = "yapall"
+version = "0.0.0"
+edition = "2021"
+license = "BSD-3"
+description = "Yet Another Pointer Analysis for LLVM"
+
+# https://nnethercote.github.io/perf-book/build-configuration.html
+[profile.release]
+lto = "thin"
+debug = true  # for dhat-heap
+
+[features]
+default = ["precompute", "rule"]
+dhat-heap = ["dep:dhat"]
+count = []  # print counts of tuples generated to stderr
+par = []
+precompute = []
+relation = []  # profile at the relation level
+rule = []  # profile at the rule level
+
+# https://github.com/mstange/samply#turn-on-debug-info-for-full-stacks
+[profile.profiling]
+inherits = "release"
+debug = true
+
+[dev-dependencies]
+criterion = "0.3"
+
+[[bench]]
+name = "bench"
+harness = false
+
+[dependencies]
+# TODO: Upgrade Ascent, use crates.io release
+# https://github.com/s-arash/ascent/issues/17
+ascent = { version = "*", "git" = "https://github.com/s-arash/ascent", branch = "par" }
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+dashmap = "3"
+dhat = { version = "0.3", optional = true }
+either = "1"
+# TODO: https://github.com/cdisselkoen/llvm-ir/pull/34
+llvm-ir = { version = "0.8", features = ["llvm-14"], git = "https://github.com/langston-barrett/llvm-ir", rev = "db50705d40af72fdd9c8560dd6ae6f0183d8f788" }
+# llvm-ir = { version = "0.8", features = ["llvm-14"], path = "../llvm-ir" }
+regex = "1"
+rustc-hash = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "1"
+tracing = "0.1"
+tracing-flame = "0.2"
+tracing-subscriber = "0.3"
+triomphe = { version = "0.1", default-features = false, features = ["std"] }

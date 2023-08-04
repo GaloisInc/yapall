@@ -1,0 +1,3 @@
+--deny=warnings
+--deny=let_underscore_drop
+-Ctarget-cpu=native

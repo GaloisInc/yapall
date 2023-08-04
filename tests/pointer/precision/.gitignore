@@ -1,0 +1,5 @@
+*.bc
+*.ll
+# lit:
+Output/
+.lit*

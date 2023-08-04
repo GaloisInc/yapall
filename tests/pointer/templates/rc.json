@@ -1,0 +1,1 @@
+{ "__rust_alloc": [ { "return-alloc": { "type": "heap" } } ] }

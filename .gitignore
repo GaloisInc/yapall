@@ -1,0 +1,10 @@
+/target
+.cargo/
+
+# Profiling
+/perf.data*
+
+# Testing
+/*.c
+/*.bc
+/*.ll
