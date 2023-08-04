@@ -1,5 +1,4 @@
 name: CI
-
 on:
   push:
     branches:
@@ -70,3 +69,15 @@ jobs:
     - uses: Swatinem/rust-cache@v2.6.0
     - name: Lint
       run: cargo clippy -- --deny warnings
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: KyleMayes/install-llvm-action@v1
+      with:
+        version: "14.0"
+    - uses: Swatinem/rust-cache@v2.6.0
+    - run: env RUSTFLAGS="@$PWD/rustc-flags" cargo test --locked --no-run
+    # TODO(#4)
+    # - run: env RUSTFLAGS="@$PWD/rustc-flags" cargo test
