@@ -12,8 +12,9 @@ use yapall::{
     analysis::pointer,
     llvm::constant::Constant,
     llvm::instruction::{Call, Opcode},
-    Alloc, Arc, Callee, FunctionName, Invoke, Module, Operand, Options, OutputRelations,
-    Signatures, TerminatorOpcode, UArc,
+    pointer::Options,
+    pointer::OutputRelations,
+    Alloc, Arc, Callee, FunctionName, Invoke, Module, Operand, Signatures, TerminatorOpcode, UArc,
 };
 
 // ------------------------------------------------------------------

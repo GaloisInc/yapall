@@ -2,9 +2,10 @@ use std::{collections::HashMap, path::PathBuf, process::Command};
 
 use yapall::{
     analysis::{callgraph, int},
+    int::IntRelations,
     llvm::constant::Constant,
     llvm::instruction::{Call, Opcode},
-    Arc, Callee, FunctionName, IntRelations, Invoke, Module, Operand, TerminatorOpcode, UArc,
+    Arc, Callee, FunctionName, Invoke, Module, Operand, TerminatorOpcode, UArc,
 };
 
 // ------------------------------------------------------------------
