@@ -41,8 +41,7 @@ dashmap = "5"
 dhat = { version = "0.3", optional = true }
 either = "1"
 # TODO: https://github.com/cdisselkoen/llvm-ir/pull/34
-llvm-ir = { version = "0.8", features = ["llvm-14"], git = "https://github.com/langston-barrett/llvm-ir", rev = "db50705d40af72fdd9c8560dd6ae6f0183d8f788" }
-# llvm-ir = { version = "0.8", features = ["llvm-14"], path = "../llvm-ir" }
+llvm-ir = { version = "0.9", features = ["llvm-14"] }
 regex = "1"
 rustc-hash = "1"
 serde = { version = "1", features = ["derive"] }

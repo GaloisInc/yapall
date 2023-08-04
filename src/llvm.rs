@@ -391,10 +391,7 @@ impl Module {
         }
         for g in &m.global_aliases {
             global_names.insert(
-                match &g.name {
-                    llvm_ir::Name::Name(n) => n.as_ref(),
-                    llvm_ir::Name::Number(_) => unreachable!(),
-                },
+                g.name.as_ref(),
                 // Globals are added by signatures during analysis, so use Arc
                 // rather than UArc.
                 Arc::new(Constant::Global(Arc::new(GlobalName::alias(g)))),

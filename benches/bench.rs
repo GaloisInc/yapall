@@ -2,7 +2,7 @@ use std::{collections::HashMap, path::Path, path::PathBuf, process::Command};
 
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
 
-use yapall::{analysis::pointer, Module, Operand, Options, Signatures};
+use yapall::{analysis::pointer, pointer::Options, Module, Operand, Signatures};
 
 // ------------------------------------------------------------------
 // Helpers (TODO: copied from tests)

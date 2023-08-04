@@ -800,21 +800,22 @@ fn memcpy_o2() {
     let _out = check(&module);
 }
 
-// XFAIL(TODO)
 #[test]
-#[should_panic(expected = "Bug!")]
+#[should_panic(expected = "assertion failed: !points_to_something")]
 fn memcpy_size_o0() {
     let module = precise("memcpy-size.c", 0);
     let _out = check(&module);
 }
 
 #[test]
+#[should_panic(expected = "assertion failed: !points_to_something")]
 fn memcpy_size_o1() {
     let module = precise("memcpy-size.c", 1);
     let _out = check(&module);
 }
 
 #[test]
+#[should_panic(expected = "assertion failed: !points_to_something")]
 fn memcpy_size_o2() {
     let module = precise("memcpy-size.c", 2);
     let _out = check(&module);

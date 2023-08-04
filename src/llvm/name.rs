@@ -17,10 +17,7 @@ impl GlobalName {
     }
 
     pub(crate) fn alias(g: &GlobalAlias) -> Self {
-        GlobalName(match &g.name {
-            llvm_ir::Name::Name(n) => (**n).clone(),
-            llvm_ir::Name::Number(_) => unreachable!(),
-        })
+        GlobalName(g.name.clone())
     }
 
     pub(crate) fn _from_string(s: String) -> Self {
