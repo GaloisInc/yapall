@@ -4,6 +4,7 @@
 
 # User documentation
 
+- [Contributing](./contributing.md)
 - [Installation](./install.md)
 - [Usage](./usage.md)
 
