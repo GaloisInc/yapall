@@ -21,7 +21,7 @@ use std::sync::atomic::{AtomicU64, Ordering};
 /// - It has a phantom type parameter `T` for extra type safety.
 /// - It can only be set by actually hashing a value.
 #[derive(Debug)]
-pub struct CachedHash<T> {
+pub(crate) struct CachedHash<T> {
     hash: AtomicU64,
     phantom: PhantomData<T>,
 }
@@ -53,7 +53,7 @@ impl<T> CachedHash<T> {
     }
 
     /// Create a new [`CachedHash`] by immediately hashing the value.
-    pub fn cached(val: &T) -> Self
+    pub(crate) fn cached(val: &T) -> Self
     where
         T: Hash,
     {
@@ -62,7 +62,7 @@ impl<T> CachedHash<T> {
 
     /// Gets the cached hash, if available.
     #[inline]
-    pub fn get(&self) -> Option<NonZeroU64> {
+    pub(crate) fn get(&self) -> Option<NonZeroU64> {
         let val = self.hash.load(Ordering::Acquire);
         NonZeroU64::new(val)
     }
@@ -71,7 +71,7 @@ impl<T> CachedHash<T> {
     ///
     /// Implementation inspired by
     /// `once_cell::race::OnceNonZeroUsize::get_or_init`.
-    pub fn get_or_init(&self, val: &T) -> NonZeroU64
+    pub(crate) fn get_or_init(&self, val: &T) -> NonZeroU64
     where
         T: Hash,
     {

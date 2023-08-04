@@ -85,7 +85,7 @@ fn signatures(program: &str, dir: &str) -> Signatures {
 
 fn module(program: &str, dir: &str, opt: u8) -> (Module, Signatures) {
     let llvm_module = compile(program, dir, opt);
-    let mut operands: HashMap<Operand, &llvm_ir::Operand> = HashMap::new();
+    let mut operands: HashMap<yapall::Arc<Operand>, &llvm_ir::Operand> = HashMap::new();
     let sigs = signatures(program, dir);
     match Module::new(&llvm_module, &mut operands) {
         Ok(m) => (m, sigs),

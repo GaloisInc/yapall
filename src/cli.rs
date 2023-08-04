@@ -1,3 +1,4 @@
+use std::fmt;
 use std::path::PathBuf;
 
 #[derive(Clone, Debug, Eq, PartialEq, clap::ValueEnum)]
@@ -8,7 +9,7 @@ pub enum Check {
 }
 
 impl std::fmt::Display for Check {
-    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Check::Default => write!(f, "default"),
             Check::None => write!(f, "none"),

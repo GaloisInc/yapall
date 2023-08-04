@@ -75,6 +75,7 @@ impl Ret {
     }
 }
 
+#[allow(variant_size_differences)] // TODO?
 #[derive(Clone, Debug, Hash, PartialEq, Eq)]
 pub enum TerminatorOpcode {
     Invoke(Invoke),

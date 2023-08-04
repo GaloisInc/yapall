@@ -97,7 +97,7 @@ fn points_to_something(out: &OutputRelations, operand: &Operand) -> bool {
     false
 }
 
-fn points_to<'module, 'a>(out: &'a OutputRelations, op: &Operand) -> HashSet<&'a Alloc> {
+fn points_to<'a>(out: &'a OutputRelations, op: &Operand) -> HashSet<&'a Alloc> {
     let mut points_to: HashSet<&Alloc> = HashSet::new();
     for (_, o, alloc) in &out.operand_points_to {
         if **o == *op {
@@ -200,7 +200,7 @@ fn convert(program: &str, dir: &str, opt: u8) -> NamedModule {
     }
 }
 
-fn check<'module>(module: &'module NamedModule) -> OutputRelations {
+fn check(module: &NamedModule) -> OutputRelations {
     let sigs = signatures(&module.program, &module.dir);
     let opts = Options {
         check_assertions: true,

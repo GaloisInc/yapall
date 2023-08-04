@@ -4,7 +4,7 @@ pub mod analysis;
 pub use analysis::*;
 pub mod arc;
 pub use arc::*;
-mod hash;
+pub mod hash;
 mod klimited;
 pub use klimited::*;
 mod lattice;

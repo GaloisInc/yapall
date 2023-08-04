@@ -52,6 +52,7 @@ pub fn analysis<'module>(
 
     #[allow(clippy::clone_on_copy)]
     #[allow(clippy::redundant_clone)]
+    #[allow(single_use_lifetimes)]
     #[allow(unreachable_code)]
     #[allow(unused_variables)]
     let outs = ascent_run! {

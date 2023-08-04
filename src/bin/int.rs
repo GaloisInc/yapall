@@ -77,7 +77,7 @@ fn main() -> Result<()> {
     // just a guess:
         HashMap::with_capacity(llvm_module.global_vars.len() + (8 * llvm_module.functions.len()));
     let module = llvm::Module::new(&llvm_module, &mut operands).context("Malformed LLVM module")?;
-    std::mem::drop(operands);
+    drop(operands);
 
     let cg = yapall::analysis::callgraph::analysis(&module);
     let outs = yapall::analysis::int::analysis(

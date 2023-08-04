@@ -6,9 +6,9 @@ use std::marker::PhantomData;
 /// The type parameter `T` is phantom, it exists solely to prevent mixing up
 /// hashes of data of different types.
 #[derive(Debug)]
-pub struct PrecomputedHash<T> {
-    pub hash: u64,
-    pub phantom: PhantomData<T>,
+pub(crate) struct PrecomputedHash<T> {
+    pub(crate) hash: u64,
+    pub(crate) phantom: PhantomData<T>,
 }
 
 /// Manually implemented to avoid unnecessary trait bound
@@ -68,7 +68,7 @@ impl<T> PrecomputedHash<T> {
     }
 
     #[inline]
-    pub fn unsafe_from_u64(hash: u64) -> Self {
+    pub(crate) fn unsafe_from_u64(hash: u64) -> Self {
         PrecomputedHash {
             hash,
             phantom: PhantomData,
@@ -76,14 +76,14 @@ impl<T> PrecomputedHash<T> {
     }
 
     #[inline]
-    pub fn unsafe_coerce<R>(self) -> PrecomputedHash<R> {
+    pub(crate) fn unsafe_coerce<R>(self) -> PrecomputedHash<R> {
         PrecomputedHash {
             hash: self.hash,
             phantom: PhantomData,
         }
     }
 
-    pub fn new(val: &T) -> Self
+    pub(crate) fn new(val: &T) -> Self
     where
         T: Hash,
     {
@@ -92,7 +92,7 @@ impl<T> PrecomputedHash<T> {
 
     /// Gets the precomputed hash, if available.
     #[inline]
-    pub fn to_u64(self) -> u64 {
+    pub(crate) fn to_u64(self) -> u64 {
         self.hash
     }
 }
