@@ -1,5 +1,19 @@
 # Installation
 
+## Pre-compiled binaries
+
+Pre-compiled binaries are available on the [releases page][releases].
+
+### Fetching binaries with cURL
+
+You can download binaries with `curl` like so (replace `X.Y.Z` with a real
+version number and `TARGET` with your OS):
+```sh
+curl -sSL https://github.com/GaloisInc/yapall/releases/download/vX.Y.Z/yapall_TARGET -o yapall
+```
+
+[releases]: https://github.com/GaloisInc/yapall/releases
+
 ## Build from source
 
 To install from source, you'll need to install Rust and [Cargo][cargo]. Follow
