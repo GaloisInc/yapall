@@ -32,9 +32,7 @@ name = "bench"
 harness = false
 
 [dependencies]
-# TODO: Upgrade Ascent, use crates.io release
-# https://github.com/s-arash/ascent/issues/17
-ascent = { version = "*", "git" = "https://github.com/s-arash/ascent", branch = "par" }
+ascent = "0.5"
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
 dashmap = "5"
