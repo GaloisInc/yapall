@@ -19,11 +19,11 @@ checksum = "f26201604c87b1e01bd3d98f8d5d9a8fcbb815e8cedb41ffccbeb4bf593a35fe"
 
 [[package]]
 name = "ahash"
-version = "0.7.6"
+version = "0.8.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fcb51a0695d8f838b1ee009b3fbf66bda078cd64590202a864a8f3e8c4315c47"
+checksum = "2c99f64d1e06488f620f932677e24bc6e2897582980441ae90a671415bd7ec2f"
 dependencies = [
- "getrandom",
+ "cfg-if",
  "once_cell",
  "version_check",
 ]
@@ -36,6 +36,12 @@ checksum = "43f6cb1bf222025340178f382c426f13757b2960e89779dfcb319c32542a5a41"
 dependencies = [
  "memchr",
 ]
+
+[[package]]
+name = "allocator-api2"
+version = "0.2.16"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0942ffc6dcaadf03badf6e6a2d0228460359d5e34b57ccdc720b7382dfbd5ec5"
 
 [[package]]
 name = "anstream"
@@ -94,14 +100,15 @@ checksum = "3b13c32d80ecc7ab747b80c3784bce54ee8a7a0cc4fbda9bf4cda2cf6fe90854"
 
 [[package]]
 name = "ascent"
-version = "0.4.0"
-source = "git+https://github.com/s-arash/ascent?branch=par#2f3af2cca3c3ada9cc7c791995fd967b7f34ee03"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "19c198f2ed71f39f543454559eecf2d9131de9563c3fb3b186d3f9d630d61908"
 dependencies = [
  "ascent_base",
  "ascent_macro",
  "boxcar",
- "dashmap 5.4.0",
- "hashbrown 0.12.3",
+ "dashmap",
+ "hashbrown 0.14.0",
  "instant",
  "nohash-hasher",
  "once_cell",
@@ -113,16 +120,18 @@ dependencies = [
 
 [[package]]
 name = "ascent_base"
-version = "0.4.0"
-source = "git+https://github.com/s-arash/ascent?branch=par#2f3af2cca3c3ada9cc7c791995fd967b7f34ee03"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "eaaf32b5dae9fa539753313973ba2b4cbefde7fa7008d1429e16c40a6d06873c"
 dependencies = [
  "paste",
 ]
 
 [[package]]
 name = "ascent_macro"
-version = "0.4.0"
-source = "git+https://github.com/s-arash/ascent?branch=par#2f3af2cca3c3ada9cc7c791995fd967b7f34ee03"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fd90d157bc1cafc0f6bdaa8af0e0325a23c46cc9da0b8768ef6cfab0901d0e36"
 dependencies = [
  "ascent_base",
  "derive-syn-parse",
@@ -372,19 +381,6 @@ dependencies = [
 
 [[package]]
 name = "dashmap"
-version = "5.4.0"
-source = "git+https://github.com/s-arash/dashmap#a65afff2ffe8f5f2638865639608ce2b6e2b565c"
-dependencies = [
- "cfg-if",
- "hashbrown 0.12.3",
- "lock_api",
- "once_cell",
- "parking_lot_core",
- "rayon",
-]
-
-[[package]]
-name = "dashmap"
 version = "5.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6943ae99c34386c84a470c499d3414f66502a41340aa895406e0d2e4a207b91d"
@@ -394,6 +390,7 @@ dependencies = [
  "lock_api",
  "once_cell",
  "parking_lot_core",
+ "rayon",
 ]
 
 [[package]]
@@ -467,17 +464,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0ce7134b9999ecaf8bcd65542e436736ef32ddca1b3e06094cb6ec5755203b80"
 
 [[package]]
-name = "getrandom"
-version = "0.2.10"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "be4136b2a15dd319360be1c07d9933517ccf0be8f16bf62a3bee4f0d618df427"
-dependencies = [
- "cfg-if",
- "libc",
- "wasi",
-]
-
-[[package]]
 name = "gimli"
 version = "0.27.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -494,16 +480,17 @@ name = "hashbrown"
 version = "0.12.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8a9ee70c43aaf417c914396645a0fa852624801b24ebb7ae78fe8272889ac888"
-dependencies = [
- "ahash",
- "rayon",
-]
 
 [[package]]
 name = "hashbrown"
 version = "0.14.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2c6201b9ff9fd90a5a3bac2e56a830d0caa509576f0e503818ee82c181b3437a"
+dependencies = [
+ "ahash",
+ "allocator-api2",
+ "rayon",
+]
 
 [[package]]
 name = "heck"
@@ -1238,12 +1225,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "wasi"
-version = "0.11.0+wasi-snapshot-preview1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
-
-[[package]]
 name = "wasm-bindgen"
 version = "0.2.87"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1412,7 +1393,7 @@ dependencies = [
  "ascent",
  "clap 4.3.19",
  "criterion",
- "dashmap 5.5.0",
+ "dashmap",
  "dhat",
  "either",
  "llvm-ir",
