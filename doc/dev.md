@@ -5,11 +5,12 @@
 To install from source, you'll need to install Rust and [Cargo][cargo]. Follow
 the instructions on the [Rust installation page][install-rust]. Then, get
 the source:
-
 ```bash
 git clone https://github.com/GaloisInc/yapall
 cd yapall
 ```
+
+
 
 Finally, build everything:
 
@@ -198,6 +199,20 @@ configuration file][cargo-conf]:
 mkdir .cargo
 printf "[build]\nrustflags = [\"@${PWD}/rustc-flags\"]\n" > .cargo/config.toml
 ```
+
+## Building Yapall Docker image 
+To build the image:
+```
+<clone the repository as described above>
+cd yapall
+docker build -t yapall .
+```
+
+To run tests and start interacting with a container in a `bash` shell:
+```
+docker run -it yapall bash
+```
+Notice, `clang-14` and `clang++-14` are available inside the container.
 
 [allowed-by-default]: https://doc.rust-lang.org/rustc/lints/listing/allowed-by-default.html
 [anti-pat]: https://rust-unofficial.github.io/patterns/anti_patterns/deny-warnings.html#denywarnings
