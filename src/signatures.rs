@@ -58,7 +58,7 @@ impl Signatures {
     }
 
     pub fn _has_signatures_for(&self, func: &str) -> bool {
-        matches!(self.set.matches(func).into_iter().next(), Some(_))
+        self.set.matches(func).into_iter().next().is_some()
     }
 
     pub fn signatures_for(&self, func: &str) -> Option<Vec<Signature>> {

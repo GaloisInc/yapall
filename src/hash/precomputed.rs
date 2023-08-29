@@ -18,7 +18,7 @@ impl<T> Copy for PrecomputedHash<T> {}
 impl<T> Clone for PrecomputedHash<T> {
     #[inline]
     fn clone(&self) -> Self {
-        Self::unsafe_from_u64(self.hash)
+        *self
     }
 }
 
