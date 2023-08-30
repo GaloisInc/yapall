@@ -1387,9 +1387,7 @@ fn template_list_o0() {
     let _out = check(&module);
 }
 
-// XFAIL(TODO): This started failing when implementing context sensitivity.
 #[test]
-#[should_panic(expected = "assertion failed: points_to_something")]
 fn template_list_o1() {
     let module = template("list.cpp", 1);
     let _out = check(&module);
@@ -1410,10 +1408,7 @@ fn template_queue_o0() {
     let _out = check(&module);
 }
 
-// XFAIL(TODO): This started failing when instruction_points_to was made
-// conditional on reachability of the containing function.
 #[test]
-#[should_panic(expected = "assertion failed: points_to_something")]
 fn template_queue_o1() {
     let module = template("queue.cpp", 1);
     let _out = check(&module);
@@ -1521,10 +1516,7 @@ fn template_stack_o0() {
     let _out = check(&module);
 }
 
-// XFAIL(TODO): This started failing when instruction_points_to was made
-// conditional on reachability of the containing function.
 #[test]
-#[should_panic(expected = "assertion failed: points_to_something")]
 fn template_stack_o1() {
     let module = template("stack.cpp", 1);
     let _out = check(&module);
@@ -1536,10 +1528,7 @@ fn template_stack_o2() {
     let _out = check(&module);
 }
 
-// XFAIL(TODO): This started failing when instruction_points_to was made
-// conditional on reachability of the containing function.
 #[test]
-#[should_panic(expected = "assertion failed: points_to_something")]
 fn template_unique_ptr_o0() {
     let module = template("unique-ptr.cpp", 0);
     let _out = check(&module);
@@ -1590,10 +1579,7 @@ fn template_vector_o0() {
     let _out = check(&module);
 }
 
-// XFAIL(TODO): This started failing when instruction_points_to was made
-// conditional on reachability of the containing function.
 #[test]
-#[should_panic(expected = "assertion failed: points_to_something")]
 fn template_vector_o1() {
     let module = template("vector.cpp", 1);
     let _out = check(&module);
