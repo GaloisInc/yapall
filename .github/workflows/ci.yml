@@ -84,5 +84,4 @@ jobs:
       with:
         prefix-key: ${{ env.CACHE_VERSION }}
     - run: env RUSTFLAGS="@$PWD/rustc-flags" cargo test --locked --no-run
-    # TODO(#4)
-    # - run: env RUSTFLAGS="@$PWD/rustc-flags" cargo test
+    - run: env RUSTFLAGS="@$PWD/rustc-flags" cargo test
