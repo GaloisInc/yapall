@@ -1,0 +1,19 @@
+name: Yapall nix CI
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v20
+        extra_nix_config: |
+          access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+      - uses: cachix/cachix-action@v12
+        with:
+          name: galois
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: build and test
+        shell: bash
+        run: nix build -L .#yapall
