@@ -51,5 +51,28 @@
             };
           };
         });
+      devShells = levers.eachSystem (system:
+        let pkgs = import nixpkgs { inherit system; };
+        in
+          {
+            # buildRustPackage doesn't provide assistance here, so simply
+            # manually create a shell.
+            default = pkgs.mkShell {
+              packages = [
+                pkgs.rustc
+                pkgs.cargo
+                pkgs.llvm_14
+                pkgs.clang_14
+                pkgs.llvm_14.dev
+                pkgs.libxml2
+                pkgs.zlib
+                pkgs.lit
+                pkgs.rust-analyzer
+              ];
+              LLVM_SYS_140_PREFIX = "${pkgs.llvm_14.dev}/";
+              RUSTC_LLVM_14 = "${pkgs.rustc}/bin/rustc";
+              hardeningDisable = [ "all" ];
+            };
+          });
     };
 }
