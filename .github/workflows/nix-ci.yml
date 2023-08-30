@@ -1,4 +1,4 @@
-name: Yapall nix CI
+name: Nix
 on:
   - push
   - pull_request
