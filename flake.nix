@@ -29,8 +29,6 @@
             src = self;
             cargoLock = {
               lockFile = ./Cargo.lock;
-              outputHashes = {
-              };
             };
             LLVM_SYS_140_PREFIX = "${pkgs.llvm_14.dev}/";
             RUSTC_LLVM_14 = "${pkgs.rustc}/bin/rustc";
@@ -39,13 +37,17 @@
               pkgs.libxml2
               pkgs.zlib
             ];
+            # Disable nix default of hardening, which will cause compilation of
+            # various tests at -O0 to fail because _FORTIFY_SOURCE requires some
+            # level of optimization.
+            hardeningDisable = [ "all" ];
             nativeCheckInputs = [
               pkgs.clang_14
             ];
             meta = with pkgs.lib; {
-              description = "Yet Anothyer Pointer Analysis for LLVM";
+              description = "Yet Another Pointer Analysis for LLVM";
               license = licenses.bsd3;
-              homepage = "https://galois.com/";
+              homepage = "https://github.com/GaloisInc/yapall";
             };
           };
         });
