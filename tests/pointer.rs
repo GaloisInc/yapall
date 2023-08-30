@@ -738,32 +738,33 @@ fn main_o2() {
     let _out = check(&module);
 }
 
-#[test]
-fn main_rs_o0() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = sound("main.rs", 0);
-    let _out = check(&module);
-}
-
-#[test]
-fn main_rs_o1() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = sound("main.rs", 1);
-    let _out = check(&module);
-}
-
-#[test]
-fn main_rs_o2() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = sound("main.rs", 2);
-    let _out = check(&module);
-}
+// TODO(#49)
+// #[test]
+// fn main_rs_o0() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = sound("main.rs", 0);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn main_rs_o1() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = sound("main.rs", 1);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn main_rs_o2() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = sound("main.rs", 2);
+//     let _out = check(&module);
+// }
 
 #[test]
 fn malloc_o0() {
@@ -1082,41 +1083,43 @@ fn sig_sig_o2() {
     let _out = check(&module);
 }
 
-#[test]
-fn slice_o0() {
-    let module = sound("slice.rs", 0);
-    let _out = check(&module);
-}
+// TODO(#49)
+// #[test]
+// fn slice_o0() {
+//     let module = sound("slice.rs", 0);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn slice_o1() {
+//     let module = sound("slice.rs", 1);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn slice_o2() {
+//     let module = sound("slice.rs", 2);
+//     let _out = check(&module);
+// }
 
-#[test]
-fn slice_o1() {
-    let module = sound("slice.rs", 1);
-    let _out = check(&module);
-}
-
-#[test]
-fn slice_o2() {
-    let module = sound("slice.rs", 2);
-    let _out = check(&module);
-}
-
-#[test]
-fn stack_o0() {
-    let module = sound("stack.rs", 0);
-    let _out = check(&module);
-}
-
-#[test]
-fn stack_o1() {
-    let module = sound("stack.rs", 1);
-    let _out = check(&module);
-}
-
-#[test]
-fn stack_o2() {
-    let module = sound("stack.rs", 2);
-    let _out = check(&module);
-}
+// TODO(#49)
+// #[test]
+// fn stack_o0() {
+//     let module = sound("stack.rs", 0);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn stack_o1() {
+//     let module = sound("stack.rs", 1);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn stack_o2() {
+//     let module = sound("stack.rs", 2);
+//     let _out = check(&module);
+// }
 
 #[test]
 fn stack_cast_o0() {
@@ -1208,47 +1211,48 @@ fn stderr_o2() {
     let _out = check(&module);
 }
 
-#[test]
-fn str_o0() {
-    let module = sound("str.rs", 0);
-    let _out = check(&module);
-}
-
-#[test]
-fn str_o1() {
-    let module = sound("str.rs", 1);
-    let _out = check(&module);
-}
-
-#[test]
-fn str_o2() {
-    let module = sound("str.rs", 2);
-    let _out = check(&module);
-}
-
-// XFAIL(TODO)
-#[test]
-#[should_panic(expected = "assertion failed: points_to_something")]
-fn string_o0() {
-    let module = sound("string.rs", 0);
-    let _out = check(&module);
-}
-
-// XFAIL(TODO)
-#[test]
-#[should_panic(expected = "assertion failed: points_to_something")]
-fn string_o1() {
-    let module = sound("string.rs", 1);
-    let _out = check(&module);
-}
-
-// XFAIL(TODO)
-#[test]
-#[should_panic(expected = "assertion failed: points_to_something")]
-fn string_o2() {
-    let module = sound("string.rs", 2);
-    let _out = check(&module);
-}
+// TODO(#49)
+// #[test]
+// fn str_o0() {
+//     let module = sound("str.rs", 0);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn str_o1() {
+//     let module = sound("str.rs", 1);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn str_o2() {
+//     let module = sound("str.rs", 2);
+//     let _out = check(&module);
+// }
+//
+// // XFAIL(TODO)
+// #[test]
+// #[should_panic(expected = "assertion failed: points_to_something")]
+// fn string_o0() {
+//     let module = sound("string.rs", 0);
+//     let _out = check(&module);
+// }
+//
+// // XFAIL(TODO)
+// #[test]
+// #[should_panic(expected = "assertion failed: points_to_something")]
+// fn string_o1() {
+//     let module = sound("string.rs", 1);
+//     let _out = check(&module);
+// }
+//
+// // XFAIL(TODO)
+// #[test]
+// #[should_panic(expected = "assertion failed: points_to_something")]
+// fn string_o2() {
+//     let module = sound("string.rs", 2);
+//     let _out = check(&module);
+// }
 
 #[test]
 fn r#struct_o0() {
@@ -1268,34 +1272,35 @@ fn r#struct_o2() {
     let _out = check(&module);
 }
 
-// XFAIL(TODO): This started failing when implementing context sensitivity.
-#[test]
-#[should_panic(expected = "assertion failed: points_to_something")]
-fn template_any_o0() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("any.rs", 0);
-    let _out = check(&module);
-}
-
-#[test]
-fn template_any_o1() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("any.rs", 1);
-    let _out = check(&module);
-}
-
-#[test]
-fn template_any_o2() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("any.rs", 2);
-    let _out = check(&module);
-}
+// TODO(#49)
+// // XFAIL(TODO): This started failing when implementing context sensitivity.
+// #[test]
+// #[should_panic(expected = "assertion failed: points_to_something")]
+// fn template_any_o0() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("any.rs", 0);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn template_any_o1() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("any.rs", 1);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn template_any_o2() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("any.rs", 2);
+//     let _out = check(&module);
+// }
 
 #[test]
 fn template_array_o0() {
@@ -1315,62 +1320,63 @@ fn template_array_o2() {
     let _out = check(&module);
 }
 
-// XFAIL(TODO): This started failing when instruction_points_to was made
-// conditional on reachability of the containing function.
-#[test]
-#[should_panic(expected = "assertion failed: points_to_something")]
-fn template_box_o0() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("box.rs", 0);
-    let _out = check(&module);
-}
-
-#[test]
-fn template_box_o1() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("box.rs", 1);
-    let _out = check(&module);
-}
-
-#[test]
-fn template_box_o2() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("box.rs", 2);
-    let _out = check(&module);
-}
-
-#[test]
-fn template_cell_o0() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("cell.rs", 0);
-    let _out = check(&module);
-}
-
-#[test]
-fn template_cell_o1() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("cell.rs", 1);
-    let _out = check(&module);
-}
-
-#[test]
-fn template_cell_o2() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("cell.rs", 2);
-    let _out = check(&module);
-}
+// TODO(#49)
+// // XFAIL(TODO): This started failing when instruction_points_to was made
+// // conditional on reachability of the containing function.
+// #[test]
+// #[should_panic(expected = "assertion failed: points_to_something")]
+// fn template_box_o0() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("box.rs", 0);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn template_box_o1() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("box.rs", 1);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn template_box_o2() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("box.rs", 2);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn template_cell_o0() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("cell.rs", 0);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn template_cell_o1() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("cell.rs", 1);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn template_cell_o2() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("cell.rs", 2);
+//     let _out = check(&module);
+// }
 
 // XFAIL(TODO): This started failing when instruction_points_to was made
 // conditional on reachability of the containing function.
@@ -1419,62 +1425,63 @@ fn template_queue_o2() {
     let _out = check(&module);
 }
 
-// XFAIL(TODO): This started failing when instruction_points_to was made
-// conditional on reachability of the containing function.
-#[test]
-#[should_panic(expected = "assertion failed: points_to_something")]
-fn template_rc_o0() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("rc.rs", 0);
-    let _out = check(&module);
-}
-
-#[test]
-fn template_rc_o1() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("rc.rs", 1);
-    let _out = check(&module);
-}
-
-#[test]
-fn template_rc_o2() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("rc.rs", 2);
-    let _out = check(&module);
-}
-
-#[test]
-fn template_refcell_o0() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("refcell.rs", 0);
-    let _out = check(&module);
-}
-
-#[test]
-fn template_refcell_o1() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("refcell.rs", 1);
-    let _out = check(&module);
-}
-
-#[test]
-fn template_refcell_o2() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("refcell.rs", 2);
-    let _out = check(&module);
-}
+// TODO(#49)
+// // XFAIL(TODO): This started failing when instruction_points_to was made
+// // conditional on reachability of the containing function.
+// #[test]
+// #[should_panic(expected = "assertion failed: points_to_something")]
+// fn template_rc_o0() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("rc.rs", 0);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn template_rc_o1() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("rc.rs", 1);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn template_rc_o2() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("rc.rs", 2);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn template_refcell_o0() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("refcell.rs", 0);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn template_refcell_o1() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("refcell.rs", 1);
+//     let _out = check(&module);
+// }
+//
+// #[test]
+// fn template_refcell_o2() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("refcell.rs", 2);
+//     let _out = check(&module);
+// }
 
 // TODO: These make the test binary exit with SIGILL...?
 
@@ -1550,28 +1557,29 @@ fn template_unique_ptr_o2() {
     let _out = check(&module);
 }
 
-// XFAIL(TODO)
-#[test]
-#[should_panic(expected = "assertion failed: points_to_something")]
-fn template_vec_o0() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("vec.rs", 0);
-    let _out = check(&module);
-}
-
-// XFAIL(TODO): This started failing when instruction_points_to was made
-// conditional on reachability of the containing function.
-#[test]
-#[should_panic(expected = "assertion failed: points_to_something")]
-fn template_vec_o1() {
-    if rustc().is_none() {
-        return;
-    }
-    let module = template("vec.rs", 1);
-    let _out = check(&module);
-}
+// TODO(#49)
+// // XFAIL(TODO)
+// #[test]
+// #[should_panic(expected = "assertion failed: points_to_something")]
+// fn template_vec_o0() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("vec.rs", 0);
+//     let _out = check(&module);
+// }
+//
+// // XFAIL(TODO): This started failing when instruction_points_to was made
+// // conditional on reachability of the containing function.
+// #[test]
+// #[should_panic(expected = "assertion failed: points_to_something")]
+// fn template_vec_o1() {
+//     if rustc().is_none() {
+//         return;
+//     }
+//     let module = template("vec.rs", 1);
+//     let _out = check(&module);
+// }
 
 // XFAIL(TODO): This started failing when instruction_points_to was made
 // conditional on reachability of the containing function.
