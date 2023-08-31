@@ -2,7 +2,7 @@
   description = "Yet Another Pointer Analysis for LLVM";
 
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/23.05;
+    nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
     levers = {
       url = "github:kquick/nix-levers";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,6 +19,9 @@
             program = "${self.packages.${system}.yapall}/bin/yapall";
           };
         });
+      checks = levers.eachSystem (system: {
+        yapall-package = self.packages.${system}.yapall;
+      });
       packages = levers.eachSystem (system:
         let pkgs = import nixpkgs { inherit system; };
         in rec {
@@ -43,7 +46,10 @@
             hardeningDisable = [ "all" ];
             nativeCheckInputs = [
               pkgs.clang_14
+              pkgs.lit
+              pkgs.llvm_14
             ];
+            preCheck = "lit tests/pointer/soundness";
             meta = with pkgs.lib; {
               description = "Yet Another Pointer Analysis for LLVM";
               license = licenses.bsd3;
