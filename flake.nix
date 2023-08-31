@@ -19,6 +19,9 @@
             program = "${self.packages.${system}.yapall}/bin/yapall";
           };
         });
+      checks = levers.eachSystem (system: {
+        yapall-package = self.packages.${system}.yapall;
+      });
       packages = levers.eachSystem (system:
         let pkgs = import nixpkgs { inherit system; };
         in rec {

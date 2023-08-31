@@ -17,4 +17,4 @@ jobs:
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
       - name: build and test
         shell: bash
-        run: nix build -L .#yapall
+        run: nix flake check
