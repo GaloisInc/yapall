@@ -3,9 +3,10 @@
 
 int baz(int x) { return rand() % 2; }
 
+// CHECK: main
 int main(int argc, char const *argv[]) {
-  // COM: I don't really know why this works.
-  // CHECK: i32 undef
+  // COM: TODO(#54)
+  // COM: CHECK: i32 undef
   baz(argc);
   return 0;
 }
