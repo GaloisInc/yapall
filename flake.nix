@@ -43,6 +43,8 @@
             hardeningDisable = [ "all" ];
             nativeCheckInputs = [
               pkgs.clang_14
+              pkgs.lit
+              pkgs.llvm_14
             ];
             preCheck = "lit tests/pointer/soundness";
             meta = with pkgs.lib; {
