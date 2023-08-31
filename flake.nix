@@ -2,7 +2,7 @@
   description = "Yet Another Pointer Analysis for LLVM";
 
   inputs = {
-    nixpkgs.url = github:nixos/nixpkgs/23.05;
+    nixpkgs.url = github:nixos/nixpkgs/nixpkgs-unstable;
     levers = {
       url = "github:kquick/nix-levers";
       inputs.nixpkgs.follows = "nixpkgs";
