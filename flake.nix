@@ -44,6 +44,7 @@
             nativeCheckInputs = [
               pkgs.clang_14
             ];
+            preCheck = "lit tests/pointer/soundness";
             meta = with pkgs.lib; {
               description = "Yet Another Pointer Analysis for LLVM";
               license = licenses.bsd3;
