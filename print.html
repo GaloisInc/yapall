@@ -237,8 +237,11 @@ the instructions on the <a href="https://www.rust-lang.org/tools/install">Rust i
 <div style="break-before: page; page-break-before: always;"></div><h1 id="developers-guide"><a class="header" href="#developers-guide">Developer's guide</a></h1>
 <h2 id="build"><a class="header" href="#build">Build</a></h2>
 <p>To install from source, you'll need to install Rust and <a href="https://doc.rust-lang.org/cargo/">Cargo</a>. Follow
-the instructions on the <a href="https://www.rust-lang.org/tools/install">Rust installation page</a>. Then, get
-the source:</p>
+the instructions on the <a href="https://www.rust-lang.org/tools/install">Rust installation page</a>.</p>
+<p>You'll also need the version of LLVM specified in the <code>llvm-ir</code> dependency in
+<code>Cargo.toml</code> (LLVM 14, at the time of writing).<sup class="footnote-reference"><a href="#1">1</a></sup> Follow the <a href="https://gitlab.com/taricorp/llvm-sys.rs#build-requirements">instructions on
+building llvm-sys</a> to make it available to Cargo.</p>
+<p>Then, get the source:</p>
 <pre><code class="language-bash">git clone https://github.com/GaloisInc/yapall
 cd yapall
 </code></pre>
@@ -246,6 +249,22 @@ cd yapall
 <pre><code class="language-bash">cargo build --release
 </code></pre>
 <p>You can find binaries in <code>target/release</code>. Run tests with <code>cargo test</code>.</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>When run from the repository root, this command will show you the exact version: <code>cargo read-manifest | jq '.dependencies|.[]|select(.name|contains(&quot;llvm&quot;))|.features|.[0]'</code>.</p>
+</div>
+<h3 id="example-debian-bookworm"><a class="header" href="#example-debian-bookworm">Example: Debian &quot;bookworm&quot;</a></h3>
+<p>Here's an end-to-end sequence of commands that installs the build and test
+dependencies of yapall on Debian bookworm:</p>
+<pre><code class="language-sh">apt-get update
+UBUNTU_NAME=&quot;bookworm&quot;
+LLVM_MAJOR_VERSION=&quot;14&quot;
+wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+echo &quot;deb http://apt.llvm.org/${UBUNTU_NAME}/ llvm-toolchain-${UBUNTU_NAME}-${LLVM_MAJOR_VERSION} main&quot; | tee /etc/apt/sources.list.d/llvm.list
+apt-get -y install --no-install-recommends llvm-${LLVM_MAJOR_VERSION} llvm-${LLVM_MAJOR_VERSION}-dev
+apt-get install libpolly-14-dev
+apt-get -y install clang-${LLVM_MAJOR_VERSION}
+apt-get -y install clang++-${LLVM_MAJOR_VERSION}
+</code></pre>
 <h3 id="features"><a class="header" href="#features">Features</a></h3>
 <p>See <code>Cargo.toml</code> for various build features. <code>par</code> enables parallel Ascent.</p>
 <h3 id="pgo"><a class="header" href="#pgo">PGO</a></h3>
