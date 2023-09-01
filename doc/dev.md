@@ -3,8 +3,14 @@
 ## Build
 
 To install from source, you'll need to install Rust and [Cargo][cargo]. Follow
-the instructions on the [Rust installation page][install-rust]. Then, get
-the source:
+the instructions on the [Rust installation page][install-rust].
+
+You'll also need the version of LLVM specified in the `llvm-ir` dependency in
+`Cargo.toml` (LLVM 14, at the time of writing).[^1] Follow the [instructions on
+building llvm-sys][llvm-sys] to make it available to Cargo.
+
+Then, get the source:
+
 ```bash
 git clone https://github.com/GaloisInc/yapall
 cd yapall
@@ -20,8 +26,27 @@ cargo build --release
 
 You can find binaries in `target/release`. Run tests with `cargo test`.
 
+[^1]: When run from the repository root, this command will show you the exact version: `cargo read-manifest | jq '.dependencies|.[]|select(.name|contains("llvm"))|.features|.[0]'`.
+
 [cargo]: https://doc.rust-lang.org/cargo/
 [install-rust]: https://www.rust-lang.org/tools/install
+[llvm-sys]: https://gitlab.com/taricorp/llvm-sys.rs#build-requirements
+
+### Example: Debian "bookworm"
+
+Here's an end-to-end sequence of commands that installs the build and test
+dependencies of yapall on Debian bookworm:
+```sh
+apt-get update
+UBUNTU_NAME="bookworm"
+LLVM_MAJOR_VERSION="14"
+wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+echo "deb http://apt.llvm.org/${UBUNTU_NAME}/ llvm-toolchain-${UBUNTU_NAME}-${LLVM_MAJOR_VERSION} main" | tee /etc/apt/sources.list.d/llvm.list
+apt-get -y install --no-install-recommends llvm-${LLVM_MAJOR_VERSION} llvm-${LLVM_MAJOR_VERSION}-dev
+apt-get install libpolly-14-dev
+apt-get -y install clang-${LLVM_MAJOR_VERSION}
+apt-get -y install clang++-${LLVM_MAJOR_VERSION}
+```
 
 ### Features
 
