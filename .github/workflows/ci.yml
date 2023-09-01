@@ -67,7 +67,7 @@ jobs:
       run: |
         rustup update
         rustup component add clippy
-    - uses: Swatinem/rust-cache@v2.6.0
+    - uses: Swatinem/rust-cache@v2.6.2
       with:
         prefix-key: ${{ env.CACHE_VERSION }}
     - name: Lint
@@ -80,7 +80,7 @@ jobs:
     - uses: KyleMayes/install-llvm-action@v1
       with:
         version: "14.0"
-    - uses: Swatinem/rust-cache@v2.6.0
+    - uses: Swatinem/rust-cache@v2.6.2
       with:
         prefix-key: ${{ env.CACHE_VERSION }}
     - run: env RUSTFLAGS="@$PWD/rustc-flags" cargo test --locked --no-run
