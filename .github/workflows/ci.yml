@@ -73,6 +73,15 @@ jobs:
     - name: Lint
       run: cargo clippy -- --deny warnings
 
+  lit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: sudo apt-get install -y llvm-14-tools
+    - run: pip install lit
+    - run: find tests/pointer/soundness -type f -print0 | xargs -0 sed -E -i "s/FileCheck/FileCheck-14/"
+    - run: lit --verbose tests/pointer/soundness
+
   test:
     runs-on: ubuntu-latest
     steps:
