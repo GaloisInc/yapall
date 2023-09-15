@@ -1,3 +1,4 @@
+// SPDX-License-Identifier:i BSD-3-Clause
 //! Integer analysis
 
 use std::collections::HashMap;

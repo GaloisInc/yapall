@@ -1,3 +1,4 @@
+// SPDX-License-Identifier:i BSD-3-Clause
 use std::time::{Duration, SystemTime};
 
 use dashmap::DashMap;

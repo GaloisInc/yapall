@@ -1,3 +1,4 @@
+// SPDX-License-Identifier:i BSD-3-Clause
 use std::fmt::{Debug, Display};
 use std::hash::Hash;
 use std::ops::Deref;

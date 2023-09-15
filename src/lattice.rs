@@ -1,3 +1,4 @@
+// SPDX-License-Identifier:i BSD-3-Clause
 //! Lattice for values of integer variables
 
 use ascent::{lattice::constant_propagation::ConstPropagation, Lattice};
