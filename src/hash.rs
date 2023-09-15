@@ -1,3 +1,4 @@
+// SPDX-License-Identifier:i BSD-3-Clause
 mod cached;
 mod precomputed;
 pub(crate) use precomputed::*;

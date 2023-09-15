@@ -1,3 +1,4 @@
+// SPDX-License-Identifier:i BSD-3-Clause
 // TODO: Handle global aliases
 use std::collections::{HashMap, HashSet};
 

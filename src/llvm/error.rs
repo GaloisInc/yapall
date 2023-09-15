@@ -1,3 +1,4 @@
+// SPDX-License-Identifier:i BSD-3-Clause
 #[derive(Clone, Debug, Default, Hash, PartialEq, Eq, thiserror::Error)]
 pub struct Error(pub String);
 

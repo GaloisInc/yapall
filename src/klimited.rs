@@ -1,3 +1,4 @@
+// SPDX-License-Identifier:i BSD-3-Clause
 // TODO: Specialize for 1-9 or so? `pushed` is where many heap allocations happen.
 use std::collections::VecDeque;
 

@@ -1,3 +1,4 @@
+// SPDX-License-Identifier:i BSD-3-Clause
 use tracing::{Id, Subscriber};
 use tracing_subscriber::{layer::Context, registry::LookupSpan, Layer};
 
