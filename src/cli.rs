@@ -1,4 +1,4 @@
-// SPDX-License-Identifier:i BSD-3-Clause
+// SPDX-License-Identifier: BSD-3-Clause
 use std::fmt;
 use std::path::PathBuf;
 

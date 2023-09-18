@@ -1,4 +1,4 @@
-// SPDX-License-Identifier:i BSD-3-Clause
+// SPDX-License-Identifier: BSD-3-Clause
 //! Representation of an LLVM module that is amenable to analysis. In
 //! particular, Ascent values must implement `Clone`, `Hash`, and `Eq`. Since
 //! the LLVM AST contains floats, and floats don't implement `Eq`, we must
