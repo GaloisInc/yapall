@@ -106,6 +106,7 @@ jobs:
           --locked \
           --release \
           --target=${{ matrix.target }}
+        cp target/${{ matrix.target }}/release/${{ env.NAME }} ${{ env.NAME }}_${{ matrix.target }}
 
     - name: Upload binaries
       uses: ncipollo/release-action@v1
