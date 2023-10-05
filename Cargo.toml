@@ -1,8 +1,8 @@
 [package]
 name = "yapall"
-version = "0.0.0"
+version = "0.1.1"
 edition = "2021"
-license = "BSD-3"
+license = "BSD-3-Clause"
 description = "Yet Another Pointer Analysis for LLVM"
 
 # https://nnethercote.github.io/perf-book/build-configuration.html
