@@ -35,7 +35,7 @@ fn setup_global_subscriber() -> impl Drop {
         .with(filter_layer)
         .with(fmt_layer)
         .with(flame_layer)
-        .with(layers::NanoCountLayer::default())
+        .with(layers::NanoCountLayer)
         .init();
     _guard
 }
