@@ -24,7 +24,7 @@ jobs:
       with:
         access_token: ${{ github.token }}
 
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Setup mdBook
       uses: peaceiris/actions-mdbook@v1
@@ -59,7 +59,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Format
       run: cargo fmt && git diff --exit-code
     - name: Deps
@@ -75,7 +75,7 @@ jobs:
   lit:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - run: sudo apt-get install -y llvm-14-tools
     - run: pip install lit
     - run: find tests/pointer/soundness -type f -print0 | xargs -0 sed -E -i "s/FileCheck/FileCheck-14/"
@@ -84,7 +84,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: KyleMayes/install-llvm-action@v1
       with:
         version: "14.0"
