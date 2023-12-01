@@ -40,6 +40,7 @@ pub struct Metrics {
 #[allow(clippy::diverging_sub_expression)]
 #[allow(clippy::just_underscores_and_digits)]
 #[allow(clippy::let_unit_value)]
+#[allow(clippy::never_loop)]
 #[allow(clippy::type_complexity)]
 #[allow(clippy::unused_unit)]
 pub fn analysis<'module>(
