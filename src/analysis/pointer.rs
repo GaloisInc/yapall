@@ -773,7 +773,7 @@ pub fn analysis<'module>(
              **f == "__memcpy_chk" ||
              f.starts_with("llvm.memcpy") ||
              f.starts_with("llvm.memmove"),
-          if let Some(dst) = args.get(0),
+          if let Some(dst) = args.first(),
           if let Some(src) = args.get(1),
           let sz = {
               if let Some(op_arc) = args.get(2) {
@@ -1058,7 +1058,7 @@ pub fn analysis<'module>(
         free_non_heap(a.clone()) <--
           calls(ctx, i, f, args, _),
           if **f == "free",
-          if let Some(ptr) = args.get(0),
+          if let Some(ptr) = args.first(),
           operand_points_to(ctx, ptr, a),
           if !a.freeable();
 
