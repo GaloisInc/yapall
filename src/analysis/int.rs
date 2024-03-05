@@ -369,7 +369,7 @@ pub fn analysis<'module>(
         operand_val(main_ctx.clone(), argc, IntLattice::top()) <--
           main(main_name),
           if let Some(func) = module.functions.get(main_name),
-          if let Some(argc) = func.parameters.get(0);
+          if let Some(argc) = func.parameters.first();
 
         // ----------------------------------------------------------
         // Assertions
