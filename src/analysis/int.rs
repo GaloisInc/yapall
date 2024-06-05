@@ -360,7 +360,7 @@ pub fn analysis<'module>(
         // Calls to external functions have unknown return values
         operand_val(caller_ctx, call_name.operand(), IntLattice::top()) <--
           calls(caller_ctx, call_name, callee_name, callee_ctx),
-          if module.decls.get(callee_name).is_some();
+          if module.decls.contains_key(callee_name);
 
         // ----------------------------------------------------------
         // argc
