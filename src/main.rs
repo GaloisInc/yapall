@@ -70,7 +70,7 @@ fn main() -> Result<()> {
                 args.module.display()
             )
         })?;
-    let mut operands: HashMap<crate::arc::Arc<llvm::Operand>, &llvm_ir::Operand> =
+    let mut operands: HashMap<arc::Arc<llvm::Operand>, &llvm_ir::Operand> =
     // just a guess:
         HashMap::with_capacity(llvm_module.global_vars.len() + (8 * llvm_module.functions.len()));
     let module = llvm::Module::new(&llvm_module, &mut operands).context("Malformed LLVM module")?;

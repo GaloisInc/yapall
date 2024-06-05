@@ -9,7 +9,7 @@ pub enum Check {
     Strict,
 }
 
-impl std::fmt::Display for Check {
+impl fmt::Display for Check {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Check::Default => write!(f, "default"),
