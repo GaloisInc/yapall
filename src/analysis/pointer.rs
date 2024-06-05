@@ -878,7 +878,7 @@ pub fn analysis<'module>(
           if !name.starts_with("llvm.memcpy") &&
              !name.starts_with("llvm.memmove"),
           if !known_functions.contains(name.as_ref()),
-          if sigs.get(name).is_none(),
+          if !sigs.contains_key(name),
           if decl.has_pointer();
 
         // Functions without signatures must be treated conservatively
