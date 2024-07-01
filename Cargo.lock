@@ -112,7 +112,7 @@ dependencies = [
  "ascent_base",
  "ascent_macro",
  "boxcar",
- "dashmap",
+ "dashmap 5.5.3",
  "hashbrown",
  "instant",
  "nohash-hasher",
@@ -379,6 +379,20 @@ dependencies = [
  "once_cell",
  "parking_lot_core",
  "rayon",
+]
+
+[[package]]
+name = "dashmap"
+version = "6.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "804c8821570c3f8b70230c2ba75ffa5c0f9a4189b9a432b6656c536712acae28"
+dependencies = [
+ "cfg-if",
+ "crossbeam-utils",
+ "hashbrown",
+ "lock_api",
+ "once_cell",
+ "parking_lot_core",
 ]
 
 [[package]]
@@ -1352,7 +1366,7 @@ dependencies = [
  "ascent",
  "clap",
  "criterion",
- "dashmap",
+ "dashmap 6.0.1",
  "dhat",
  "either",
  "llvm-ir",
