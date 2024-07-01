@@ -35,7 +35,7 @@ harness = false
 ascent = "0.5"
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
-dashmap = "5"
+dashmap = "6"
 dhat = { version = "0.3", optional = true }
 either = "1"
 # TODO: https://github.com/cdisselkoen/llvm-ir/pull/34
