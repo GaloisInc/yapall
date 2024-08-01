@@ -41,7 +41,7 @@ either = "1"
 # TODO: https://github.com/cdisselkoen/llvm-ir/pull/34
 llvm-ir = { version = "0.9", features = ["llvm-14"] }
 regex = "1"
-rustc-hash = "1"
+rustc-hash = "2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 thiserror = "1"
