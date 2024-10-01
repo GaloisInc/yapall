@@ -94,7 +94,7 @@ pub struct InstructionOperand(Arc<Operand>);
 #[inline]
 #[allow(unused_variables)]
 fn unreachable(s: &str) -> ! {
-    if cfg!(not(release)) {
+    if cfg!(debug_assertions) {
         unreachable!("{}", s)
     } else {
         unsafe { std::hint::unreachable_unchecked() }
