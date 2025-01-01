@@ -32,7 +32,7 @@ name = "bench"
 harness = false
 
 [dependencies]
-ascent = "0.5"
+ascent = "0.7"
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
 dashmap = "6"
